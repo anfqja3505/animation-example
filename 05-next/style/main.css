@@ -35,31 +35,46 @@ header nav > ul > li {padding:0 10px; position:relative;}
 header nav > ul > li > a {}
 header nav > ul > li > .sub {
     position:absolute;
-    transform: translateY(-100px);
+    transform: translateY(-120px);
+    height: 0;
     opacity: 0;
     transition: transform 1s, opacity 1.5s;
+    overflow: hidden;
 }
 header nav > ul > li:nth-child(4):hover .sub {
     opacity: 1;
     transform: translateY(0);
+    height: max-content;
 }
 header nav > ul > li > .sub li {width:100px; padding: 10px 0 0;}
 header nav > ul > li > .sub li a {}
 header nav > ul > li > .sub li a:hover {color:#ddd;}
 /*section*/
 section {}
-section .sec1 {background-image:url(../images/bg_01.jpg)}
-section .sec2 {background-image:url(../images/bg_02.jpg)}
-section .sec3 {background-image:url(../images/bg_03.jpg)}
+section .sec1 {background-image:url(../images/bg_01.jpg);}
+section .sec2 {
+    background-image:
+        url(../images/person.png),
+        url(../images/space.png), 
+        url(../images/bg_02.jpg); 
+    background-size: auto, cover, cover;
+    background-repeat: no-repeat;
+    animation: bgAni 1.5s ease 2s both;
+}
+@keyframes bgAni {
+    0% {background-position: 80% center;}
+    100% {background-position: 20% center;}
+}
+section .sec3 {background-image:url(../images/bg_03.jpg);}
 section > div {
     background-size:cover; background-position:center;
     text-align:center; height:100vh; width:100%; 
     display:flex; flex-flow:column wrap; justify-content:center; color:#fff;
 }
 section > div:nth-child(2) {
-    background-repeat:no-repeat;
+/*     background-repeat:no-repeat;
     background-size:cover, cover;
-    background-position:40% center, center;
+    background-position:40% center, center; */
 }
 section > div h1 {
     font-family: 'Pattaya', sans-serif;
