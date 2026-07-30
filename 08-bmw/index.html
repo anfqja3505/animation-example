@@ -24,14 +24,20 @@
             width:80%; margin:0 auto; display:flex; justify-content:space-around;
         }
         header nav a {padding:10px 0; position:relative; color: #fff;}
-        header nav a:hover::after {width: 100%; opacity: 1;}
+        /* border는 단순 시각적인 밑줄 디자인일뿐, 애니메이션&개별크기 동작 불가 */
+        header nav a:hover::after {opacity: 1; transform: scaleX(1);}
+        /* transform은 변형 속성일뿐 애니메이션 속성이 아님 */
+        /* 사용자 이벤트와 함께 변경되는 CSS속성 애니메이션은 transition */
+        /* 이벤트와 관계없이 자동 실행되는 CSS속성 애니메이션은 keyframes, animation */
         header nav a::after {
             content:''; display:block;
-            width:0%; height:1px; background:#cae4ff;
-            position:absolute; bottom:-1px; left: 50%;
-            transform: translateX(-50%);
+            width:100%; height:1px; background:#cae4ff;
+            position:absolute; bottom:-1px; left: 0;
+            transform: scaleX(0);
+            /* 중심축 특징으로 애니메이션 적용할 땐 항상 transform 속성 사용하기 */
+            /* 크기(scale) 이동(translate) 회전(rotate) 기울기(skew) */
             opacity: 0;
-            transition: width 0.5s, opacity 0.5s;
+            transition: transform 0.5s, opacity 0.5s;
         }
 
         main {position:relative; width:1400px; height:80vh; margin:0 auto;}
